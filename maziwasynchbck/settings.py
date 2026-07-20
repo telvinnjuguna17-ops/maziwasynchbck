@@ -16,19 +16,22 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-y#go8o*%s&&05!t*s8v5jm#r@jc$mt4f@i7zbi^=izt+*=%114'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
+    'telvojr.alwaysdata.net',
     'spool-confider-joyfully.ngrok-free.dev',
     '127.0.0.1',
     'localhost',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
 ]
 
 AUTH_USER_MODEL = 'core.User'  # Custom user model
@@ -43,24 +46,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
      # Third party apps
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'drf_spectacular',
-    
-
 
     # our apps
     'core',
     'cooperative',
     'collector',
     'farmer',
-
-
-
 ]
 
 MIDDLEWARE = [
@@ -98,23 +95,14 @@ WSGI_APPLICATION = 'maziwasynchbck.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'maziwaksynchdb',
-        'HOST':'localhost',
-        'USER':'root',
-        'PASSWORD':'',
-    }
+        'NAME': 'telvojr_maziwasynchdb',       
+        'USER': 'telvojr',                      
+        'PASSWORD': 'torkio2007',
+        'HOST': 'mysql-telvojr.alwaysdata.net',  
+}
 }
 
 
@@ -169,15 +157,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-}   
+}
 
-# JWT settings 
+# JWT settings
 from datetime import timedelta
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
-    'REFRESH_TOKEN_LIFETIME':timedelta(days=30),
-
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
 
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True

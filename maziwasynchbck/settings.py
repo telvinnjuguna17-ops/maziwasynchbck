@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'maziwasynchbck.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'telvojr_maziwasynchdb',       
+        'NAME': 'telvojr_maziwadb',       
         'USER': 'telvojr',                      
         'PASSWORD': 'torkio2007',
         'HOST': 'mysql-telvojr.alwaysdata.net',  

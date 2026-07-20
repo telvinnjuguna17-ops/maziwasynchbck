@@ -1,0 +1,10 @@
+djangorestframework
+django-cors-headers
+mysqlclient
+djangorestframework-simplejwt
+drf-spectacular
+pillow
+requests
+groq
+joblib
+python-dotenv
